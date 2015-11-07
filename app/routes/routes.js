@@ -12,6 +12,7 @@ module.exports = function(app) {
     require('./teamRoutes')(app);
     require('./playerStatsRoutes')(app);
     require('./teamStatsRoutes')(app);
+    require('./matchRoutes')(app);
 	//Send the home page - for all other requests
     app.get('/*', function(req,res) {
         res.sendfile('public/html/home.html');

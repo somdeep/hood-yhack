@@ -9,12 +9,28 @@ module.exports = function(app) {
 //CRUD for team
 
 
-// getTeam
+// getTeams
     app.get('/getTeams', function(req,res) {
       teamProfile.find({},function(err,data){
         if(err) res.send(err);
         res.json(data);
       });
+    });
+
+// getTeamById
+    app.get('/getTeam/id/:teamId', function(req, res) {
+        teamProfile.find({teamId:req.params.teamId}, function(err, data) {
+            if(err) res.send(err);
+            res.json(data);
+        });
+    });
+
+// getTeamByName
+    app.get('/getTeam/name/:teamName', function(req, res) {
+        teamProfile.find({teamName:req.params.teamName}, function(err, data) {
+            if(err) res.send(err);
+            res.json(data);
+        });
     });
 
 // postTeam

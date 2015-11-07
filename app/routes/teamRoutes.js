@@ -4,7 +4,29 @@ var teamProfile = require('./../models/teamProfile');
 
 
 module.exports = function(app) {
-    app.get('/team', function(req,res) {
-        res.json({'success':'team yayyyy'});
+
+
+//CRUD for team
+
+
+//getTeam
+    app.get('/getTeam', function(req,res) {
+
+      teamProfile.find({},function(err,data){
+
+        if(err) res.send(err);
+
+        res.json(data);
+
+
+
+      }
+
     });
+
+
+
+
+
+
 };

@@ -19,6 +19,29 @@
 	</head>
 	<body ng-app="mainApp">
         <div ng-controller="homeCtrl">
+            
+            <!-- Pop-up to input score -->
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            
             <!-- Navbar -->
             <div class="navbar navbar-default navbar-fixed-top" id="navBar" ng-show="isLoggedIn" >
                 <div class="container" >
@@ -37,7 +60,7 @@
                         <ul class="nav navbar-nav navbar-right navbar-brand" ng-show="true">
                             <li class="nav"><a href="/profile" style="font-size:14px">{{loggedInUser.name}}</a></li>
                             <li class=""><a href="/team" style="font-size:14px">My Team</a></li>
-                            <li class=""><a href="/match" style="font-size:14px">Match</a></li>
+                            <li class=""><a href="/match" style="font-size:14px" ng-click="addScore()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></li>
                             <li class=""><a href="/login" ng-click="logout()"><facebook-login-button></facebook-login-button>
         </a></li>
                         </ul>
@@ -61,7 +84,7 @@
             <div class="container" align="middle">
                 <p class="text-muted">
                     <p class="" valign="middle" style="color:#FFF;">
-                        <strong>Made with <3 </strong>
+                        <strong>Made with &nbsp;<span class="glyphicon glyphicon-heart" aria-hidden="true"></span></strong>
 
                     </p>
                 </p>

@@ -10,6 +10,7 @@
     "cookie-parser": "*",
     "express": "~4.0.0",
     "express-session": "latest",
+    "faker": "^3.0.1",
     "mongoose": "~3.6.2",
     "twit": "^2.1.0",
     "twitter": "^1.2.5"

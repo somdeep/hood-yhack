@@ -1,4 +1,4 @@
-var app = angular.module('mainApp', ['ngRoute','ngCookies','ui.router','facebookUtils'])
+var app = angular.module('mainApp', ['ngRoute','ngCookies','facebookUtils','ngFileUpload'])
 .constant('facebookConfigSettings', {
     'routingEnabled' : true,
     'channelFile'    : 'channel.html',
@@ -15,7 +15,7 @@ app.config(function($routeProvider, $locationProvider) {
     })
     .when('/', {
       templateUrl: '/html/feed.html',
-      controller: 'feedCtrl',
+      controller:    'feedCtrl',
       needAuth: true
     })
     .when('/profile', {
@@ -41,16 +41,9 @@ app.config(function($routeProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);
 });
 
-app.config(['$httpProvider', function ($httpProvider) {
-  //Reset headers to avoid OPTIONS request (aka preflight)
-  $httpProvider.defaults.headers.common = {};
-  $httpProvider.defaults.headers.post = {};
-  $httpProvider.defaults.headers.put = {};
-  $httpProvider.defaults.headers.patch = {};
-}]);
 
 
-app.controller('homeCtrl', function ($scope, $http, $rootScope, $location, facebookUser) {
+app.controller('homeCtrl', function ($scope, $http, $rootScope, $location, facebookUser, Upload ) {
     $rootScope.loggedInUser = undefined;
     console.log('home control');
     
@@ -72,17 +65,19 @@ app.controller('homeCtrl', function ($scope, $http, $rootScope, $location, faceb
     $rootScope.$on('fbLoginSuccess', function(name, response) {
       facebookUser.then(function(user) {
         //Values only if made public will be retured by FB
+        
         user.api('/me?fields=id,name,email,birthday,cover').then(function(response) {
             $rootScope.loggedInUser = response;
-            console.log(response);
+            $rootScope.loggedInUser.team={'name':'RockOn','owner':false};
+            
             //Sending to backend to verify profile or create profile if non existant
-            $scope.updateUserDetails(response);
+            $scope.updateUserDetails(JSON.parse(JSON.stringify(response)));
             
             //set cookie
             $scope.isLoggedIn = true;
             console.log(JSON.parse(JSON.stringify(response)));
             setCookie('fbVal',JSON.stringify(response),1,'');
-            console.log('------Successful',response);
+            
             if($location.$$path === '/login') {
                 $location.path('/');
             }
@@ -104,15 +99,44 @@ app.controller('homeCtrl', function ($scope, $http, $rootScope, $location, faceb
     };
     
     $scope.updateUserDetails = function(userData) {
-        $http.post('/player/verify',userData)
+        console.log(userData.name);
+        $http.post('/player/validate', {"name":userData.name,"id":userData.id})
         .success(function(data) {
-            deleteCookie('fbVal');
-            setCookie('fbVal',JSON.stringify(data),1,'');
-            $rootScope.loggedInUser = data;
+            console.log('==================');
+            console.log(data);
+            if (data.status=="new") {
+                $location.path('/register');
+            } else if(data.status == "error") {
+                deleteCookie('fbVal');
+                $scope.isLoggedIn = false;
+                $rootScope.loggedInUser = undefined;
+            } else {
+                setCookie('fbVal',JSON.stringify(data),1,'');
+                $rootScope.loggedInUser = data;
+                $scope.isLoggedIn = true;
+            }
         })
         .error(function(err) {
             console.log(err);
         });
+    };
+    //$('#myModal').modal("hide");
+    $scope.addScore = function() {
+        //$('#myModal').modal("toggle");
+    };
+    
+    $scope.model = {};
+    $scope.selectedFile = [];
+    $scope.uploadProgress = 0;
+    
+    
+    $scope.onFileSelect = function ($files) {
+        $scope.uploadProgress = 0;
+        $scope.selectedFile = $files;
+    };
+    
+    $scope.uploadPhoto = function(file) {
+        console.log(document.getElementById('file'));
     };
 });
 

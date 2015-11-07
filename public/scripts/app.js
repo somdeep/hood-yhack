@@ -71,8 +71,10 @@ app.controller('homeCtrl', function ($scope, $http, $rootScope, $location, faceb
     
     $rootScope.$on('fbLoginSuccess', function(name, response) {
       facebookUser.then(function(user) {
-        user.api('/me').then(function(response) {
+        //Values only if made public will be retured by FB
+        user.api('/me?fields=id,name,email,birthday,cover').then(function(response) {
             $rootScope.loggedInUser = response;
+            console.log(response);
             //Sending to backend to verify profile or create profile if non existant
             $scope.updateUserDetails(response);
             

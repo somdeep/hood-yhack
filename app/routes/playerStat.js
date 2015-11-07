@@ -15,9 +15,9 @@ app.get('/playerStat/get', function (req,res) {
     });
 
 
-	app.get('/playerStat/get/:player_id', function (req,res){
+	app.get('/playerStat/get/:playerId', function (req,res){
 
-    	playerStats.find({player_id:req.params.player_id}, function (err,data){
+    	playerStats.find({playerId:req.params.playerId}, function (err,data){
     		if(err)
     			res.send(err);
     		res.json(data);
@@ -43,13 +43,13 @@ app.get('/playerStat/get', function (req,res) {
 
     });
 
-    app.put('/playerStat/update/:player_id', function (req,res){
+    app.put('/playerStat/update/:playerId', function (req,res){
     	console.log(req.body);
 
     	var updated=req.body;
     	console.log(updated);
 
-    	playerStats.update ({player_id:req.params.player_id},{$set : updated}, function (err,updated){
+    	playerStats.update ({playerId:req.params.playerId},{$set : updated}, function (err,updated){
     		if (err) 
     			res.send(err);
     			
@@ -60,8 +60,8 @@ app.get('/playerStat/get', function (req,res) {
     
 
     
-    app.delete('/playerStat/delete/:player_id', function (req,res){
-    	playerStats.remove({player_id:req.params.player_id},function (err,removed){
+    app.delete('/playerStat/delete/:playerId', function (req,res){
+    	playerStats.remove({playerId:req.params.playerId},function (err,removed){
     		if(err)
     			res.send(err);
     		res.json(removed);

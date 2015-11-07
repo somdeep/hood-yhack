@@ -22,9 +22,9 @@ module.exports = function(app) {
 
 
 
-	app.get('/player/get/:player_id', function (req,res){
+	app.get('/player/get/:playerId', function (req,res){
 
-    	playerProfile.find({player_id:req.params.player_id}, function (err,data){
+    	playerProfile.find({playerId:req.params.playerId}, function (err,data){
     		if(err)
     			res.send(err);
     		res.json(data);
@@ -50,13 +50,13 @@ module.exports = function(app) {
 
     });
 
-    app.put('/player/update/:player_id', function (req,res){
+    app.put('/player/update/:playerId', function (req,res){
     	console.log(req.body);
 
     	var updated=req.body;
     	console.log(updated);
 
-    	playerProfile.update ({player_id:req.params.player_id},{$set : updated}, function (err,updated){
+    	playerProfile.update ({playerId:req.params.playerId},{$set : updated}, function (err,updated){
     		if (err) 
     			res.send(err);
     			
@@ -67,8 +67,8 @@ module.exports = function(app) {
     
 
     
-    app.delete('/player/delete/:player_id', function (req,res){
-    	playerProfile.remove({player_id:req.params.player_id},function (err,removed){
+    app.delete('/player/delete/:playerId', function (req,res){
+    	playerProfile.remove({playerId:req.params.playerId},function (err,removed){
     		if(err)
     			res.send(err);
     		res.json(removed);

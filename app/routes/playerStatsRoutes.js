@@ -5,7 +5,7 @@ var playerStats = require('./../models/playerStats');
 
 module.exports = function(app) {
 
-app.get('/playerStat/get', function (req,res) {
+app.get('/playerStats/get', function (req,res) {
 
         playerStats.find(function (err,players){
         	if(err)
@@ -15,7 +15,7 @@ app.get('/playerStat/get', function (req,res) {
     });
 
 
-	app.get('/playerStat/get/:playerId', function (req,res){
+	app.get('/playerStats/get/:playerId', function (req,res){
 
     	playerStats.find({playerId:req.params.playerId}, function (err,data){
     		if(err)
@@ -25,7 +25,7 @@ app.get('/playerStat/get', function (req,res) {
     });
 
 
-    app.post('/playerStat/create', function(req,res){
+    app.post('/playerStats/create', function(req,res){
 
     	var player = req.body;
     	//player.name=req.body.name;
@@ -43,7 +43,7 @@ app.get('/playerStat/get', function (req,res) {
 
     });
 
-    app.put('/playerStat/update/:playerId', function (req,res){
+    app.put('/playerStats/update/:playerId', function (req,res){
     	console.log(req.body);
 
     	var updated=req.body;
@@ -60,7 +60,7 @@ app.get('/playerStat/get', function (req,res) {
     
 
     
-    app.delete('/playerStat/delete/:playerId', function (req,res){
+    app.delete('/playerStats/delete/:playerId', function (req,res){
     	playerStats.remove({playerId:req.params.playerId},function (err,removed){
     		if(err)
     			res.send(err);

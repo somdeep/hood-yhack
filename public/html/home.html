@@ -20,16 +20,13 @@
 	   <div ng-controller="homeCtrl">
             <!-- Navbar -->
 
-            <div class="container" >
+            <div class="container">
                 <br/><br/><br/><br/><br/>
 
-                <div class="row">
-                    <div class="col-sm-1 col-md-1"></div>
-                    <div class="col-xs-8 col-sm-10 col-md-10">
-                        <div ng-view="">
-                        </div>
-                    </div>
-                    <div class="col-sm-1 col-md-1"></div>
+                <!--			 Code Below - Angular Routing for Templating		-->
+                <div  ui-view>
+                </div>
+                <div  ng-view="" >
                 </div>
             </div>
         </div>
@@ -37,8 +34,8 @@
         <footer class="footer" style="background-color:#222;">
             <div class="container" align="middle">
                 <p class="text-muted">
-                    <p class="white" valign="middle">
-                        <a class="white" href="" target="_blank">Made with <3</a>
+                    <p class="" valign="middle" style="color:#FFF;">
+                        <strong>Made with <3 </strong>
 
                     </p>
                 </p>
@@ -54,6 +51,8 @@
         <script src="/js/jquery.min.js"></script>
         <script src="/js/angular.min.js"></script>
         <script src="/js/angular-route.min.js"></script>
+        <script src="/js/angular-ui-router.min.js"></script>
+        <script src="/js/angular-cookies.min.js"></script>
 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 
@@ -61,6 +60,8 @@
         <script src="/scripts/app.js"></script>
         <script src="/scripts/controller/loginCtrl.js"></script>
         <script src="/scripts/controller/feedCtrl.js"></script>
+        <!-- FB SDK -->
+        <script src="bower_components/angularFacebookUtils/src/facebookUtils.min.js"></script>
 
 	</body>
 </html>

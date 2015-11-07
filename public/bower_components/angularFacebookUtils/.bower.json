@@ -1,0 +1,30 @@
+{
+  "name": "angularFacebookUtils",
+  "version": "1.1.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "src/bower_components",
+    "Gruntfile.js",
+    "src/scripts/*.js",
+    "src/views/*.html"
+  ],
+  "dependencies": {
+    "angular": "~1.2.0",
+    "angular-route": "~1.2.9"
+  },
+  "main": [
+    "src/*.js"
+  ],
+  "homepage": "https://github.com/davidchang/angular-facebook-utils",
+  "_release": "1.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.1.0",
+    "commit": "192be2fc0abc6b949fb25aec474ce84d02903abc"
+  },
+  "_source": "git://github.com/davidchang/angular-facebook-utils.git",
+  "_target": "~1.1.0",
+  "_originalSource": "angular-facebook-utils",
+  "_direct": true
+}

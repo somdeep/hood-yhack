@@ -1,0 +1,104 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Angular Facebook Utils</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+    <style>
+      html, body {
+        margin: 20px;
+      }
+      body {
+        background: #fafafa;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #333;
+      }
+      .margin-left {
+        margin-left: 10px;
+      }
+      .margin-top {
+        margin-top: 10px;
+      }
+      header {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        background-color: white;
+        padding: 25px 35px;
+        border-bottom: 1px solid #CCC;
+      }
+      header > section > div {
+        float: left;
+      }
+      header > section > div > div {
+        margin-top: 3px;
+      }
+      ul {
+        list-style-type: none;
+        margin-bottom: 5px;
+        padding-right: 10px;
+        padding-left: 0px;
+      }
+      ul li {
+        display: inline-block;
+        padding-right: 20px;
+      }
+      #pageContainer {
+        margin-top: 100px;
+      }
+    </style>
+</head>
+  <body ng-app="facebookUtilsDemo" ng-controller="RootCtrl">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+      <script src="bower_components/es5-shim/es5-shim.js"></script>
+      <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <header>
+
+      <section>
+        <ul>
+          <li><a href='#/'>Home</a></li>
+          <li><a href='#/private'>Private JSON Dump</a></li>
+          <li><a target="_blank" href='https://github.com/davidchang/angular-facebook-utils'>Code on Github</a></li>
+        </ul>
+      </section>
+
+      <section class='clearfix'>
+        <facebook-login-button></facebook-login-button>
+
+        <div class='margin-left' ng-show='loggedInUser.name'>
+          <div>Hello, {{loggedInUser.name}}!</div>
+        </div>
+
+        <div class='margin-left' ng-hide='loggedInUser.name'>
+          <div>Hello, Stranger!</div>
+        </div>
+      </section>
+    </header>
+
+    <div id='pageContainer' ng-view></div>
+
+    <script src="src/bower_components/angular/angular.min.js"></script>
+    <script src="src/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="src/facebookUtils.min.js"></script>
+
+    <!-- DEMO -->
+    <script src="demo/demoApp.js"></script>
+
+</body>
+</html>

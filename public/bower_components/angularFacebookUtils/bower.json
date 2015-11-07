@@ -1,0 +1,19 @@
+{
+  "name": "angularFacebookUtils",
+  "version": "1.1.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "src/bower_components",
+    "Gruntfile.js",
+    "src/scripts/*.js",
+    "src/views/*.html"
+  ],
+  "dependencies": {
+    "angular": "~1.2.0",
+    "angular-route": "~1.2.9"
+  },
+  "main": [
+    "src/*.js"
+  ]
+}

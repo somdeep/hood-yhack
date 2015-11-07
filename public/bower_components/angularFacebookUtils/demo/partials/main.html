@@ -1,0 +1,205 @@
+<style>
+  #pageContainer > section {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #CCC;
+  }
+  #pageContainer > section:last-child {
+    border-bottom: 0px solid #CCC;
+  }
+</style>
+
+<section>
+  <h1>Angular Facebook Utils</h1>
+  <p>Login Button directive and Authenticated Routing out of the box. Built for Angular 1.2.</p>
+</section>
+
+<section>
+  <h1>Due Credit</h1>
+  <p>I took code and ideas from these 3 places, so they deserve more obvious credit:</p>
+  <p><a href='http://blog.brunoscopelliti.com/facebook-authentication-in-your-angularjs-web-app'>http://blog.brunoscopelliti.com/facebook-authentication-in-your-angularjs-web-app</a></p>
+  <p><a href='https://github.com/Terumi/AngularJS-Facebook-Login/blob/master/js/app.js'>https://github.com/Terumi/AngularJS-Facebook-Login/blob/master/js/app.js</a></p>
+  <p><a href='https://github.com/necolas/css3-social-signin-buttons'>https://github.com/necolas/css3-social-signin-buttons</a></p>
+</section>
+
+
+<section>
+  <h1>Installation</h1>
+  <ol class="margin-top">
+    <li><code>bower install angular-facebook-utils</code></li>
+    <li>
+      <div>Include facebookUtilsFirebase.min.js</div>
+      <pre class='marginTop'>&lt;script src="bower_components/angular-facebook-utils/src/facebookUtilsFirebase.min.js&gt;&lt;/script&gt;</pre>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h1>Login Button - Usage</h1>
+  <ol class="margin-top">
+    <li>
+      <p>Declare 'facebookUtils' as a dependency</p>
+      <pre class='marginTop'>
+angular.module('facebookUtilsDemo', ['facebookUtils'])</pre>
+    </li>
+
+    <li>
+      <p>Add your appID to the facebookConfigSettings constant</p>
+      <p>Secret: You don't actually have to do this right away. If you leave it out, you'll get steps to guide you through registering your app with Facebook</p>
+      <pre class='marginTop'>
+angular.module('facebookUtilsDemo', ['facebookUtils'])
+  .constant('facebookConfigSettings', {
+    'appID' : '314159265358979323846264338'
+  });</pre>
+    </li>
+
+    <li>
+      <p>Use the Login Button directive</p>
+      <pre class='marginTop'>&lt;facebook-login-button&gt;&lt;/facebook-login-button&gt;</pre>
+    </li>
+
+    <li>
+      <p>Listen to fbLoginSuccess events</p>
+      <pre class='marginTop'>
+$rootScope.$on('fbLoginSuccess', function(name, response) {
+  facebookUser.then(function(user) {
+    user.api('/me').then(function(response) {
+      $rootScope.loggedInUser = response;
+    });
+  });
+});
+
+$rootScope.$on('fbLogoutSuccess', function() {
+  $scope.$apply(function() {
+    $rootScope.loggedInUser = {};
+  });
+});</pre>
+    </li>
+  </ol>
+
+</section>
+
+
+<section>
+  <h1>Authenticated Routing - Usage</h1>
+
+  <div ng-show='loggedInUser.name'>
+    <div class='marginTop'>If you visit <a href='#/private'>#/private</a>, you will see a dump of your JSON data</div>
+  </div>
+
+  <div ng-hide='loggedInUser.name'>
+    <div class='marginTop'>If you visit <a href='#/private'>#/private</a>, you should get redirected back here, since you're not logged in</div>
+  </div>
+
+  <ol class="margin-top">
+    <li>
+      <p>Declare 'facebookUtils' (and 'ngRoute', since you want routing) as a dependency</p>
+      <pre class='marginTop'>
+angular.module('facebookUtilsDemo', ['facebookUtils', 'ngRoute'])</pre>
+    </li>
+
+    <li>
+      <p>Add your appID and routingEnabled to the facebookConfigSettings constant</p>
+      <pre class='marginTop'>
+angular.module('facebookUtilsDemo', ['facebookUtils', 'ngRoute'])
+  .constant('facebookConfigSettings', {
+    'appID' : '314159265358979323846264338',
+    'routingEnabled' : true
+  });</pre>
+    </li>
+
+    <li>
+      <p>Do your routing as normal, but add the needAuth: true key to protected routes</p>
+      <pre>
+angular.module('facebookUtilsDemo', ['facebookUtils', 'ngRoute'])
+  .config(function($routeProvider) {
+    $routeProvider.when('/', {
+      templateUrl: 'demo/partials/main.html',
+      controller: angular.noop
+    })
+    .when('/private', {
+      templateUrl: 'demo/partials/private.html',
+      controller: angular.noop,
+      needAuth: true
+    })
+      </pre>
+    </li>
+
+  </ol>
+
+</section>
+
+<section>
+  <h1>Configuration Options</h1>
+  <table class='table table-striped'>
+    <thead>
+      <tr><th>Object Key</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>appID</td>
+        <td>''</td>
+        <td>Your Facebook ID (if empty, you will see a help modal instead)</td>
+      </tr>
+      <tr>
+        <td>permissions</td>
+        <td>''</td>
+        <td>Comma separated String for the Facebook permissions you want to request</td>
+      </tr>
+      <tr>
+        <td>channelFile</td>
+        <td>'bower_components/angular-facebook-utils/channel.html'</td>
+        <td>The filepath to your channel file</td>
+      </tr>
+
+      <tr>
+        <td>routingEnabled</td>
+        <td>false</td>
+        <td>Whether or not to enforce Facebook authentication to view routes with <code>'needAuth' : true</code></td>
+      </tr>
+
+      <tr>
+        <td>loginPath</td>
+        <td>'/'</td>
+        <td>Where to be redirected when not logged in</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h1>Events</h1>
+  <div>Changes in log in status are broadcasted on the root scope along with corresponding data; so you'll just want to set up <code>$scope.$on('eventName')</code> listeners in your various controllers.
+  <table class='table table-striped'>
+    <thead>
+      <tr><th>Event Name</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>fbStatusChange</td>
+        <td>Change in status</td>
+      </tr>
+      <tr>
+        <td>fbLoginSuccess</td>
+        <td>Successfully logged in (will contain a userNotAuthorized property if the user did not authorize permissions</td>
+      </tr>
+      <tr>
+        <td>fbLoginFailure</td>
+        <td>Tried to log in, but an error occurred</td>
+      </tr>
+      <tr>
+        <td>fbLogoutSuccess</td>
+        <td>Successfully logged out</td>
+      </tr>
+      <tr>
+        <td>fbLogoutFailure</td>
+        <td>Tried to log out, but an error occurred</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h1>Me</h1>
+  <a href='davidandsuzi.com'>davidandsuzi.com</a>
+</section>

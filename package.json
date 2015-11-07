@@ -6,6 +6,7 @@
   "author": "Ranjith Kumar S ( ranji2612 ), Somdeep Dey, Devwrat More, Harshit Saxena",
   "dependencies": {
     "body-parser": "~1.0.0",
+    "bower": "^1.6.5",
     "cookie-parser": "*",
     "express": "~4.0.0",
     "express-session": "latest",

@@ -5,13 +5,18 @@ var app = angular.module('mainApp', ['ngRoute','ngCookies','facebookUtils','ngFi
     'appID'          : '927018427365481',
     'loginPath'      : '/login'
   });
-    
+
 app.config(function($routeProvider, $locationProvider) {
     $routeProvider
     .when('/login', {
       templateUrl: '/html/login.html',
       controller: 'loginCtrl',
       needAuth: false
+    })
+    .when('/register', {
+      templateUrl: '/html/register.html',
+      controller: 'registerCtrl',
+      needAuth: true
     })
     .when('/', {
       templateUrl: '/html/feed.html',
@@ -36,7 +41,7 @@ app.config(function($routeProvider, $locationProvider) {
     .otherwise({
       redirectTo  : '/'
     });
-    
+
     // use the HTML5 History API
 	$locationProvider.html5Mode(true);
 });
@@ -46,9 +51,9 @@ app.config(function($routeProvider, $locationProvider) {
 app.controller('homeCtrl', function ($scope, $http, $rootScope, $location, facebookUser, Upload ) {
     $rootScope.loggedInUser = undefined;
     console.log('home control');
-    
+
     $scope.isLoggedIn = false;
-    
+
     //If not login and not logged in
     if($location.$$path != '/login' && readCookie('fbVal')==="") {
         console.log('Not logged in');
@@ -58,10 +63,10 @@ app.controller('homeCtrl', function ($scope, $http, $rootScope, $location, faceb
     if($location.$$path == '/login' && readCookie('fbVal')!="") {
         $location.path('/');
         $scope.isLoggedIn = true;
-    
+
     }
-    
-    
+
+
     $rootScope.$on('fbLoginSuccess', function(name, response) {
       facebookUser.then(function(user) {
         //Values only if made public will be retured by FB
@@ -71,7 +76,7 @@ app.controller('homeCtrl', function ($scope, $http, $rootScope, $location, faceb
             $rootScope.loggedInUser.team={'name':'RockOn','owner':false};
             
             //Sending to backend to verify profile or create profile if non existant
-            $scope.updateUserDetails(JSON.parse(JSON.stringify(response)));
+                $scope.updateUserDetails(JSON.parse(JSON.stringify(response)));
             
             //set cookie
             $scope.isLoggedIn = true;
@@ -81,7 +86,7 @@ app.controller('homeCtrl', function ($scope, $http, $rootScope, $location, faceb
             if($location.$$path === '/login') {
                 $location.path('/');
             }
-            
+
         });
       });
     });
@@ -92,12 +97,12 @@ app.controller('homeCtrl', function ($scope, $http, $rootScope, $location, faceb
           deleteCookie('fbVal');
       });
     });
-    
+
     $scope.logout = function() {
         deleteCookie('fbVal');
         $scope.isLoggedIn = false;
     };
-    
+
     $scope.updateUserDetails = function(userData) {
         console.log(userData.name);
         $http.post('/player/validate', {"name":userData.name,"id":userData.id})

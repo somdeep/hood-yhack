@@ -68,7 +68,7 @@ module.exports = function(app) {
 
     
     app.delete('/player/delete/:playerId', function (req,res){
-    	playerProfile.remove({playerId:req.params.playerId},function (err,removed){
+    	playerProfile.remove({_id:req.params.playerId},function (err,removed){
     		if(err)
     			res.send(err);
     		res.json(removed);

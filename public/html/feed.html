@@ -1,7 +1,15 @@
-<br/><hr/>
 <div class="container">
     <div class="row">
-        <center><h3>Hood..<br/> Coming soon.. </h3></center>
-        <facebook-login-button></facebook-login-button>
+        <div class="col-sm-12">
+            <input type="text" class="form-control" ng-model="searchText" placeholder="Search anything.."/><hr/>
+        </div>
+        <!-- Search comes Here -->
+        <!-- Feed Comes here -->
+        <div class="feedBlock col-xs-12" ng-repeat="feed in feeds">
+            <strong>{{feed.wt}}</strong> beats <strong>{{feed.lt}}</strong> by {{feed.score}}. {{feed.comment}}
+        </div>
+        
+        <!-- Search Results come here -->
+        
     </div>
 </div>

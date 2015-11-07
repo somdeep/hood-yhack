@@ -15,17 +15,43 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
         <base href="/">
+        
 	</head>
 	<body ng-app="mainApp">
-	   <div ng-controller="homeCtrl">
+        <div ng-controller="homeCtrl">
             <!-- Navbar -->
+            <div class="navbar navbar-default navbar-fixed-top" id="navBar" ng-show="isLoggedIn" >
+                <div class="container" >
 
-            <div class="container">
+                    <button class="navbar-toggle navbar" data-toggle="collapse" data-target=".navHeaderCollapse" style="background-color:#FFF;">
+                        <span class="icon-bar" style="background-color:#FFF;"></span>
+                        <span class="icon-bar" style="background-color:#FFF;"></span>
+                        <span class="icon-bar" style="background-color:#FFF;"></span>
+                        <span class="icon-bar" style="background-color:#FFF;"></span>
+
+            </button>
+                    <div class="navbar-header">
+                        <a class="navbar-brand nav" href="/"><strong>Hood</strong></a>
+                    </div>
+                    <div class="collapse navbar-collapse navHeaderCollapse" >
+                        <ul class="nav navbar-nav navbar-right navbar-brand" ng-show="true">
+                            <li class="nav"><a href="/profile" style="font-size:14px">{{loggedInUser.name}}</a></li>
+                            <li class=""><a href="/team" style="font-size:14px">My Team</a></li>
+                            <li class=""><a href="/match" style="font-size:14px">Match</a></li>
+                            <li class=""><a href="/login" ng-click="logout()"><facebook-login-button></facebook-login-button>
+        </a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+            
+            
+            <div class="">
                 <br/><br/><br/><br/><br/>
 
                 <!--			 Code Below - Angular Routing for Templating		-->
-                <div  ui-view>
-                </div>
                 <div  ng-view="" >
                 </div>
             </div>
@@ -60,6 +86,9 @@
         <script src="/scripts/app.js"></script>
         <script src="/scripts/controller/loginCtrl.js"></script>
         <script src="/scripts/controller/feedCtrl.js"></script>
+        <script src="/scripts/controller/profileCtrl.js"></script>
+        <script src="/scripts/controller/teamCtrl.js"></script>
+        <script src="/scripts/controller/matchCtrl.js"></script>
         <!-- FB SDK -->
         <script src="bower_components/angularFacebookUtils/src/facebookUtils.min.js"></script>
 

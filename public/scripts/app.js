@@ -18,6 +18,21 @@ app.config(function($routeProvider, $locationProvider) {
       controller: 'feedCtrl',
       needAuth: true
     })
+    .when('/profile', {
+      templateUrl: '/html/profile.html',
+      controller: 'profileCtrl',
+      needAuth: true
+    })
+    .when('/team', {
+      templateUrl: '/html/team.html',
+      controller: 'teamCtrl',
+      needAuth: true
+    })
+    .when('/match', {
+      templateUrl: '/html/match.html',
+      controller: 'matchCtrl',
+      needAuth: true
+    })
     .otherwise({
       redirectTo  : '/'
     });
@@ -35,9 +50,12 @@ app.config(['$httpProvider', function ($httpProvider) {
 }]);
 
 
-app.controller('homeCtrl', function ($scope, $rootScope, $location, facebookUser) {
+app.controller('homeCtrl', function ($scope, $http, $rootScope, $location, facebookUser) {
     $rootScope.loggedInUser = undefined;
     console.log('home control');
+    
+    $scope.isLoggedIn = false;
+    
     //If not login and not logged in
     if($location.$$path != '/login' && readCookie('fbVal')==="") {
         console.log('Not logged in');
@@ -46,14 +64,20 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, facebookUser
     //If login and not loggedin
     if($location.$$path == '/login' && readCookie('fbVal')!="") {
         $location.path('/');
+        $scope.isLoggedIn = true;
+    
     }
     
     
     $rootScope.$on('fbLoginSuccess', function(name, response) {
       facebookUser.then(function(user) {
         user.api('/me').then(function(response) {
-          $rootScope.loggedInUser = response;
+            $rootScope.loggedInUser = response;
+            //Sending to backend to verify profile or create profile if non existant
+            $scope.updateUserDetails(response);
+            
             //set cookie
+            $scope.isLoggedIn = true;
             console.log(JSON.parse(JSON.stringify(response)));
             setCookie('fbVal',JSON.stringify(response),1,'');
             console.log('------Successful',response);
@@ -71,6 +95,23 @@ app.controller('homeCtrl', function ($scope, $rootScope, $location, facebookUser
           deleteCookie('fbVal');
       });
     });
+    
+    $scope.logout = function() {
+        deleteCookie('fbVal');
+        $scope.isLoggedIn = false;
+    };
+    
+    $scope.updateUserDetails = function(userData) {
+        $http.post('/player/verify',userData)
+        .success(function(data) {
+            deleteCookie('fbVal');
+            setCookie('fbVal',JSON.stringify(data),1,'');
+            $rootScope.loggedInUser = data;
+        })
+        .error(function(err) {
+            console.log(err);
+        });
+    };
 });
 
 function setCookie( name, value, days, path ) {

@@ -27,5 +27,5 @@ require('./app/routes/routes.js')(app);
 
 
 //Start the awesomeness
-app.listen(8080);	
+app.listen(port);	
 console.log('Magic happens on port '+port); 

@@ -10,7 +10,7 @@ module.exports = function(app) {
 
 
 // getTeams
-    app.get('/team/getTeams', function(req,res) {
+    app.get('/team/get', function(req,res) {
       teamProfile.find({},function(err,data){
         if(err) res.send(err);
         res.json(data);
@@ -18,7 +18,7 @@ module.exports = function(app) {
     });
 
 // getTeamById
-    app.get('/team/getTeam/id/:teamId', function(req, res) {
+    app.get('/team/get/id/:teamId', function(req, res) {
         teamProfile.find({teamId:req.params.teamId}, function(err, data) {
             if(err) res.send(err);
             res.json(data);
@@ -26,7 +26,7 @@ module.exports = function(app) {
     });
 
 // getTeamByName
-    app.get('/team/getTeam/name/:teamName', function(req, res) {
+    app.get('/team/get/name/:teamName', function(req, res) {
         teamProfile.find({teamName:req.params.teamName}, function(err, data) {
             if(err) res.send(err);
             res.json(data);
@@ -34,7 +34,7 @@ module.exports = function(app) {
     });
 
 // postTeam
-    app.post('/team/createTeam', function(req, res) {
+    app.post('/team/create', function(req, res) {
         console.log(req.body);
 
         // schema validation pending
@@ -49,7 +49,7 @@ module.exports = function(app) {
     });
 
 // updateTeam
-    app.put('/team/updateTeam/:teamId', function(req, res) {
+    app.put('/team/update/:teamId', function(req, res) {
         console.log(req.body);
 
         var updatedTeam = req.body;
@@ -62,7 +62,7 @@ module.exports = function(app) {
     });
 
 // delTeam
-    app.delete('/team/deleteTeam/:teamId', function(req, res) {
+    app.delete('/team/delete/:teamId', function(req, res) {
         console.log(req.body);
 
         teamProfile.remove({teamId:req.params.teamId}, function(err, removed){

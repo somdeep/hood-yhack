@@ -11,7 +11,7 @@ module.exports = function(app) {
 	//Add the API for team Operations
     require('./teamRoutes')(app);
     require('./playerStat')(app);
-    require('./analyticsRoutes')(app);
+    require('./teamStatRoutes')(app);
 	//Send the home page - for all other requests
     app.get('/*', function(req,res) {
         res.sendfile('public/html/home.html');

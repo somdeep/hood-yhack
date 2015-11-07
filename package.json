@@ -1,0 +1,16 @@
+{
+  "name": "hood",
+  "version": "0.0.1",
+  "description": "Hood - An all-round app for basketball",
+  "main": "server.js",
+  "author": "Ranjith Kumar S ( ranji2612 ), Somdeep Dey, Devwrat More, Harshit Saxena",
+  "dependencies": {
+    "body-parser": "~1.0.0",
+    "cookie-parser": "*",
+    "express": "~4.0.0",
+    "express-session": "latest",
+    "mongoose": "~3.6.2",
+    "twit": "^2.1.0",
+    "twitter": "^1.2.5"
+  }
+}

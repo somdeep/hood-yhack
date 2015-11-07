@@ -6,7 +6,10 @@ var teamProfile = require('./../models/teamProfile');
 
 
 module.exports = function(app) {
-	//Insert my tweet
+	//Add the API for player Operations
+    require('./playerRoutes')(app);
+	//Add the API for team Operations
+    require('./teamRoutes')(app);
 	//Send the home page - for all other requests
     app.get('/*', function(req,res) {
         res.sendfile('public/html/home.html');

@@ -14,21 +14,12 @@
 
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-
+        <base href="/">
 	</head>
-	<body>
-		<div ng-controller="homeCtrl">
+	<body ng-app="mainApp">
+	   <div ng-controller="homeCtrl">
             <!-- Navbar -->
-            <div class="navbar navbar-default navbar-fixed-top" style="background-color:#FFF;">
-                <div class="container" >
-                    <div class="navbar-headr" >
-
-                        <strong><h3>GSAPP - Spring 2016</h3></strong><br/>
-                    </div>
-
-                </div>
-            </div>
-
+            
             <div class="container" >
                 <br/><br/><br/><br/><br/>
 
@@ -54,8 +45,22 @@
             </div>
         </footer>
         <!-- Closing Scripts -->
-        
         <!-- Latest compiled and minified JavaScript -->
+        <!--
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"  crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"  crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"  crossorigin="anonymous"></script>
+        -->
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/angular.min.js"></script>
+        <script src="/js/angular-route.min.js"></script>
+        
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+        
+        <!-- Include Angular Scripts -->
+        <script src="/scripts/app.js"></script>
+        <script src="/scripts/controller/loginCtrl.js"></script>
+        <script src="/scripts/controller/feedCtrl.js"></script>
+        
 	</body>
 </html>

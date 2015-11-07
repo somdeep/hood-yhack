@@ -10,6 +10,7 @@ module.exports = function(app) {
     require('./playerRoutes')(app);
 	//Add the API for team Operations
     require('./teamRoutes')(app);
+    require('./playerStat')(app);
     require('./analyticsRoutes')(app);
 	//Send the home page - for all other requests
     app.get('/*', function(req,res) {

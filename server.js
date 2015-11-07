@@ -2,10 +2,6 @@
 //Initial configuration
 var express  = require('express');
 var app      = express(); 								// create our app w/ express
-var bodyParser     = require('body-parser');			// To fetch data during posts
-
-
-var port  	 = process.env.PORT || 8000; 				// set the port
 var mongoose = require('mongoose'); 					// mongoose for mongodb
 var bodyParser     = require('body-parser');			// To fetch data during posts
 var port  	 = process.env.PORT || 8000; 				// set the port
@@ -27,5 +23,10 @@ require('./app/routes/routes.js')(app);
 
 
 //Start the awesomeness
-app.listen(port);	
+//app.listen(port);	
+http.createServer(function(req, res) {
+      res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Hello World\n');
+}).listen(port);
+
 console.log('Magic happens on port '+port); 

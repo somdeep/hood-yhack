@@ -1,11 +1,61 @@
 <html>
 	<head>
 		<title>Hood</title>
-		<!-- Meta Tags -->
+        <meta charset="utf-8" />
+        <!--  Meta tags for sharing -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
 		<!-- Include Script -->
+        <!-- Theme CSS -->
+        <link rel="stylesheet" href="/css/mainTheme.css">
+        <!-- Bootstrap -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
 	</head>
 	<body>
-		<br/><hr/>
-		<center><h3>Hood..<br/> Coming soon.. </h3></center>
+		<div ng-controller="homeCtrl">
+            <!-- Navbar -->
+            <div class="navbar navbar-default navbar-fixed-top" style="background-color:#FFF;">
+                <div class="container" >
+                    <div class="navbar-headr" >
+
+                        <strong><h3>GSAPP - Spring 2016</h3></strong><br/>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="container" >
+                <br/><br/><br/><br/><br/>
+
+                <div class="row">
+                    <div class="col-sm-1 col-md-1"></div>
+                    <div class="col-xs-8 col-sm-10 col-md-10">
+                        <div ng-view="">
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-md-1"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="footer" style="background-color:#222;">
+            <div class="container" align="middle">
+                <p class="text-muted">
+                    <p class="white" valign="middle">
+                        <a class="white" href="http://www.arch.columbia.edu" target="_blank">Made with <3</a>
+
+                    </p>
+                </p>
+            </div>
+        </footer>
+        <!-- Closing Scripts -->
+        
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 	</body>
 </html>

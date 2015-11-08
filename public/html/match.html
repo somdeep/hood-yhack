@@ -1,15 +1,14 @@
 <style>
 .teamRow {
-        font-size:10px;
         background:#FFF;
         margin-bottom: 5px;
         margin-top: 5px;
-    }
-	.teamRow:hover {
+        align-content: flex-start;
         background: #FFF;
         text-decoration:none;
-        box-shadow: 0px 0px 10px #888888;
+        box-shadow: 0px 0px 2px #888888;
         border-left: 3px solid #123;
+        padding: 10px;
     }
 </style>
 <div>
@@ -23,7 +22,7 @@
 				<h4>Team to Play next</h4><br/>
 			</div>
 			<div class="col-sm-1"></div>
-			<div class="col-sm-5 box btn" style="">
+			<div class="col-sm-5 box btn" style="" ng-click="getTeams(1)">
 				<br/><br/><br/>
 				<img src="/images/png/box.png"><br/><br/>
 				<h4>Take the Challenge to the Next level</h4><br/>
@@ -31,9 +30,25 @@
 			
 		</div>
         
-        <div class="row" align="middle" ng-show="matchSelection" ng-click="getTeams(1)">
-            <div ng-repeat = "team in teams" class="teamRow">
-                <a href="/team/{{team._id}}">{{team.name}}</a><br/>
+        <div class="row" align="" ng-show="teamSelection" >
+            <h3 class="bs-callout"><strong>Matching Teams</strong></h3>
+            
+            <br/>
+            <div ng-repeat = "team in teams" class="teamRow col-xs-12">
+                <div class="col-sm-6 col-sx-12"><strong><a href="/team/{{team._id}}">{{team.name}}</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;<i>{{team.warcry}}</i>
+                </div>
+                <div class="col-sm-2 col-xs-4">
+                    {{team.stats.wins}}
+                </div>
+                <div class="col-sm-2 col-xs-4">
+                    {{team.stats.losses}}
+                </div>
+                <div class="col-sm-2 col-xs-4">
+                    {{team.stats.homeWins}}
+                </div>
+                
+                <hr/>
+                &nbsp;&nbsp;-&nbsp;&nbsp;{{team.hood}}
             </div>
         </div>
 	</div>

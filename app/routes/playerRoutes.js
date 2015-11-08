@@ -79,8 +79,7 @@ module.exports = function(app) {
 		app.post('/player/validate',function(req,res){
 			var flag=0;
             var player=req.body;
-            console.log(player);
-            playerProfile.find({name:player.name},function(err,data){
+             playerProfile.find({name:player.name},function(err,data){
 
 						if(err) res.send(err);
 

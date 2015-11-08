@@ -4,13 +4,13 @@ app.controller('matchCtrl', function ($scope,$http,$location) {
     
     $scope.matchSelection = true;
     $scope.teamSelection  = false;
-    
+    $scope.teams = [];
     $scope.getTeams = function(level) {
         //Returnes a set of teams
         data = {
     "_id" : "563eb000a257955407d0262d",
     "name" : "Rock On",
-    "warCry" : "Fear not",
+    "warcry" : "Fear not",
     "captain" : {
             "name" : "Reid Goodwin",
             "playerId" : 101
@@ -45,7 +45,8 @@ app.controller('matchCtrl', function ($scope,$http,$location) {
         "homeWins" : 58
     }
 };
-        $scope.teams = data;
+        $scope.teams = [data];
+        console.log($scope.teams);
         $scope.toggle();
     };
     

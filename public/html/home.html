@@ -15,33 +15,14 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
         <base href="/">
-        
+
 	</head>
 	<body ng-app="mainApp">
         <div ng-controller="homeCtrl">
-            
+
             <!-- Pop-up to input score -->
-            <!-- Modal -->
-            <div id="myModal" class="modal fade" role="dialog">
-              <div class="modal-dialog">
+           
 
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
-                  </div>
-                  <div class="modal-body">
-                    <p>Some text in the modal.</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-            
             <!-- Navbar -->
             <div class="navbar navbar-default navbar-fixed-top" id="navBar" ng-show="isLoggedIn" >
                 <div class="container" >
@@ -70,8 +51,8 @@
                 </div>
 
             </div>
-            
-            
+
+
             <div class="">
                 <br/><br/><br/><br/><br/>
 
@@ -130,10 +111,11 @@
         <script src="/scripts/controller/teamCtrl.js"></script>
         <script src="/scripts/controller/matchresultsCtrl.js"></script>
         <script src="/scripts/controller/matchCtrl.js"></script>
+        <script src="/scripts/controller/registerCtrl.js"></script>
         <!-- FB SDK -->
         <script src="bower_components/angularFacebookUtils/src/facebookUtils.min.js"></script>
 
-    
-    
+
+
 	</body>
 </html>

@@ -1,14 +1,25 @@
 
-
+<link rel="stylesheet" type="text/css" href="/css/tab.css">
 <div>
-  
 
 
-<table>
-  <tr ng-repeat="post in matchData">
-    <td>lazy</td> &nbsp;&nbsp;&nbsp;&nbsp; <td>work</td>
-  </tr>
-</table>
 
-  
+  <table class="rwd-table" style="width:500px;">
+    <tr>
+      <th>Team A</th>
+      <th>Team B</th>
+      <th>Score</th>
+      <th>Date</th>
+    </tr>
+    <tr ng-repeat="post in matchData">
+      <td data-th="Game">Star Wars</td>
+      <td data-th="Genre">Adventure, Sci-fi</td>
+      <td data-th="Year">1977</td>
+      <td data-th="Gross">$460,935,665</td>
+    </tr>
+
+  </table>
+
+
+
 </div>

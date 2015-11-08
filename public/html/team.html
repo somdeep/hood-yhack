@@ -97,7 +97,7 @@
                     <div class="col-md-4 team-grid" align="middle" ng-repeat="member in currentTeamMembers">
 						<div align="middle"><img src="http://graph.facebook.com/{{member.playerId}}/picture?type=large" alt="" /></div>
                         <div class="">
-							<h4><strong>{{member.name}}</strong></h4>
+                            <h4><strong><a href="/profile/{{member.playerId}}" style="text-decoration:none;">{{member.name}}</a></strong></h4>
 							<p>{{member.position}}</p>
 						</div>
 					</div>

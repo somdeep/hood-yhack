@@ -5,6 +5,7 @@ app.controller('teamCtrl', function ($rootScope, $scope,$http,$location,  $route
         if ($rootScope.loggedInUser === "undefined" || readCookie('fbVal') != "" ) {
             var user = JSON.parse(readCookie('fbVal'));
         }
+        $scope.challangeVisibility = $rootScope.team
     };
     console.log($routeParams.teamId);
     $http.get('/team/get/id/'+$routeParams.teamId)
@@ -22,7 +23,6 @@ app.controller('teamCtrl', function ($rootScope, $scope,$http,$location,  $route
     });
     
     $scope.getTeamMembers = function() {
-        console.log('00000000000');
         var temp = $scope.currentTeam.teamMembers;
         console.log(temp);
         $http.get('/player/getMany/'+temp.join('+'))
@@ -34,6 +34,7 @@ app.controller('teamCtrl', function ($rootScope, $scope,$http,$location,  $route
             console.log(err);
         });
     };
+    
     
     
 });

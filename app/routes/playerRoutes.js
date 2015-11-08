@@ -60,8 +60,6 @@ module.exports = function(app) {
     });
 
     app.put('/player/update/:playerId', function (req,res){
-    	console.log(req.body);
-
     	var updated=req.body;
     	console.log(updated);
 

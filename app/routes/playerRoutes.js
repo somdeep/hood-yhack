@@ -78,18 +78,9 @@ module.exports = function(app) {
 
 		app.post('/player/validate',function(req,res){
 			var flag=0;
-			var player=req.body;
-
-		/*	playerProfile.count({name:player.name},function(err,cnt){
-				if(err) res.send(err);
-
-				if(cnt<1)
-				res.send("Count under 1");
-
-			});
-
-*/
-				playerProfile.find({name:player.name},function(err,data){
+            var player=req.body;
+            console.log(player);
+            playerProfile.find({name:player.name},function(err,data){
 
 						if(err) res.send(err);
 
@@ -97,7 +88,8 @@ module.exports = function(app) {
 						if (data.length==0)
 						{
 											res.json({"status":"new"});
-											playerProfile.create(player,function(err,data1){
+                            player['playerId'] = player.id
+                            playerProfile.create(player,function(err,data1){
 
 								    		if(err)
 								        		res.send(err);
@@ -117,15 +109,16 @@ module.exports = function(app) {
 												return v;       // return the unchanged property value.
 											});
 											var cnt=0;
-
-
-
+                                            flag = 1;
+                                            if (player.name === str.name && player.id === str.playerId)
+                                                flag = 0
+                                            /*
 											for (key in player)
 											{
 												if(!(player[key]==str[key]))
 												flag=1;
 											}
-
+                                            */
 											if(flag==1)
 											{
 												var ret={"status":"error"};

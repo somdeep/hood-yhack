@@ -23,7 +23,7 @@ app.config(function($routeProvider, $locationProvider) {
       controller:    'feedCtrl',
       needAuth: true
     })
-    .when('/profile', {
+    .when('/profile/:pId', {
       templateUrl: '/html/profile.html',
       controller: 'profileCtrl',
       needAuth: true

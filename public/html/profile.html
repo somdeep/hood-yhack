@@ -1,21 +1,9 @@
-`<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Cristiano Ronaldo</title>
-		<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+		
+<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
 		<!-- web-font -->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,300,700,800,400,600' rel='stylesheet' type='text/css'>
 		<!-- web-font -->
 		<!-- js -->
-		<script src="/js/jquery.min.js"></script>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<!-- js -->
 		<!-- start-smoth-scrolling -->
@@ -37,23 +25,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		 new WOW().init();
 		</script>
 <!-- animated-css -->
-	</head>
-	<body>
 		<!-- header -->
 		<div id="home" class="heder">
 			<!-- container -->
 			<div class="container">
 				<div class="header-top">
 					<div class="heder-logo">
-						<h1><a href="#"><b>Cristiano Ronaldo</b></a></h1>
-						<h5 style="color:white;">Manchester</h5>
+						<h1><a href="#"><b>{{currentUser.name}}</b></a></h1>
+						<h5 style="color:white;">{{currentUser.position}} from {{currentUser.hood}}</h5>
 					</div>
 					<div class="top-nav">
 					<span class="menu"><img src="images/menu.png" alt=""></span>
 						<ul>
 
 
-							<li><a class="Signup play-icon popup-with-zoom-anim btn-primary" href="#small-dialog2">Challenge</a></li>
+							<li><a class="Signup play-icon popup-with-zoom-anim btn-primary" href="#small-dialog2">Request to Join</a></li>
 
 
 						</ul>
@@ -258,27 +244,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<div class="clearfix"> </div>
 					<!-->
-				 <script type="text/javascript" src="/js/circles.js"></script>
-					         <script>
-								var colors = [
-										['#FFFFFF', '#42B8DD'], ['#FFFFFF', '#42B8DD'], ['#FFFFFF', '#42B8DD'], ['#FFFFFF', '#42B8DD']
-									];
-								for (var i = 1; i <= 5; i++) {
-									var child = document.getElementById('circles-' + i),
-										percentage = 40 + (i * 10);
-
-									Circles.create({
-										id:         child.id,
-										percentage: percentage,
-										radius:     80,
-										width:      10,
-										number:   	percentage / 10,
-										text:       '%',
-										colors:     colors[i - 1]
-									});
-								}
-
-				</script>
+				 
 				<!--/-->
 					<div class="skills-grid-text">
 						<h5 class="plus wow fadeInRight">Something about our skills</h5>
@@ -390,29 +356,4 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<!-- container -->
 		</div>
-		<!-- skills -->
-		<!-- skills-middle -->
-		<div class="skills-middle">
-			<!-- container -->
-
-			<!-- container -->
-		</div>
-		<!-- skills-middle -->
-		<!-- skills-bottom -->
-		<div class="skills-bottom">
-			<!-- container -->
-
-			<!-- container -->
-		</div>
-		<!-- skills-bottom -->
-		<!-- contact -->
-
-		<!-- footer -->
-		<div class="footer">
-			<!-- container -->
-						<!-- container -->
-		</div>
-		<!-- footer -->
-	</body>
-</html>
-`
+		

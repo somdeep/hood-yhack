@@ -11,7 +11,8 @@
     "express": "~4.0.0",
     "express-session": "latest",
     "faker": "^3.0.1",
-    "mongoose": "~3.6.2",
+    "mongoose": "latest",
+    "multer": "^1.1.0",
     "twit": "^2.1.0",
     "twitter": "^1.2.5"
   }

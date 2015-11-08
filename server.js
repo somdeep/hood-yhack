@@ -22,6 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }))    // parse application/x-ww
 app.use(bodyParser.json())    // parse application/json
 
 app.use(express.static(__dirname + '/public')); 	// set the static files location
+app.use(express.static(__dirname + '/tmp')); 	// set the static files location
 
 require('./app/routes/routes.js')(app);
 

@@ -32,6 +32,7 @@ for(i = 0; i < 100; i++)
     steals = stealsArray[faker.random.number() % 15];
     var playerProfile = require('./app/models/playerProfile');
     var player ={
+	playerId : i+100,
         name: name,
         teamId: teamId,
         position: position,

@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var dbSchema = new Schema({
+        playerId : String,
         name: String,
         teamId: String,
         nickName: String,

@@ -33,6 +33,11 @@ app.config(function($routeProvider, $locationProvider) {
       controller: 'teamCtrl',
       needAuth: true
     })
+     .when('/matchresults', {
+      templateUrl: '/html/matchresults.html',
+      controller: 'matchresultsCtrl',
+      needAuth: true
+    })
     .when('/match', {
       templateUrl: '/html/match.html',
       controller: 'matchCtrl',

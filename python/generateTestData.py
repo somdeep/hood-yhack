@@ -17,7 +17,7 @@ def updatePlayerStats(players):
     for p in players:
         #print "**********************************"
         #print "P ", p
-        playerCursor = db.playerProfile.find({"playerId":str(p)})
+        playerCursor = db.playerprofiles.find({"playerId":str(p)})
         for cursor in playerCursor:
             pp = cursor;
         #print "Retrieved player\n", pp
@@ -39,7 +39,7 @@ def updatePlayerStats(players):
         steals += rnd.randint(0, 7)
         #print "steals", steals
 
-        result = db.playerProfile.update_one(
+        result = db.playerprofiles.update_one(
                 { "playerId": str(p) },
                 {
                     "$set": {"stats.points": points, "stats.rebounds":rebounds, "stats.assists":assists, "stats.steals":steals}
@@ -48,7 +48,7 @@ def updatePlayerStats(players):
         #print "matched results", result.matched_count
         #print "modified results", result.modified_count
         #print "P ", p
-        playerCursor = db.playerProfile.find({"playerId":str(p)})
+        playerCursor = db.playerprofiles.find({"playerId":str(p)})
         for cursor in playerCursor:
             pp = cursor;
         #print "Retrieved player\n", pp
@@ -73,7 +73,7 @@ for teamId in range(1, teamCount+1):
     ##print "teamMembers : ", teamMembers
     hood = hoods[rnd.randint(0, 24)]
     for player in teamMembers:
-        result = db.playerProfile.insert_one(
+        result = db.playerprofiles.insert_one(
                 {
                     "playerId": str(player),
                     "name": names.get_full_name(),
@@ -90,7 +90,7 @@ for teamId in range(1, teamCount+1):
                 }
             )
 
-    result = db.teamProfiles.insert_one(
+    result = db.teamprofiles.insert_one(
             {
                 "teamId": str(teamId),
                 "name": names.get_last_name(),
@@ -120,8 +120,8 @@ for matchId in range(1, matchCount+1):
     while team2Id == team1Id:
         team2Id = rnd.randint(1, teamCount)
 
-    team1Cursor = db.teamProfiles.find({"teamId":str(team1Id)})
-    team2Cursor = db.teamProfiles.find({"teamId":str(team2Id)})
+    team1Cursor = db.teamprofiles.find({"teamId":str(team1Id)})
+    team2Cursor = db.teamprofiles.find({"teamId":str(team2Id)})
     for t in team1Cursor:
         team1 = t
     ##print "team1\n", team1
@@ -172,7 +172,7 @@ for matchId in range(1, matchCount+1):
     lost2 = team2['stats']['lost'] + loss2;
 
     print "team1Id", team1Id
-    result = db.teamProfiles.update_one(
+    result = db.teamprofiles.update_one(
         { "teamId": str(team1Id) },
         {
             "$set": {"stats.won":win1, "stats.lost":lost1}
@@ -180,7 +180,7 @@ for matchId in range(1, matchCount+1):
     )
     print '-----------', result.matched_count
     print '-----------', result.modified_count
-    result = db.teamProfiles.update_one(
+    result = db.teamprofiles.update_one(
         { "teamId": str(team2Id) },
         {
             "$set": {"stats.won":win2, "stats.lost":lost2}

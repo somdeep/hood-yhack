@@ -4,38 +4,31 @@
     <div class="form-group">
       <label class="control-label col-sm-2" for="email">Nickname :</label>
       <div class="col-sm-5">
-        <input type="text" class="form-control" id="email" placeholder="Enter nickname">
+        <input type="text" class="form-control" id="email" placeholder="Enter nickname" ng-model="registerData.nickname">
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="pwd">Position:</label>
       <div class="col-sm-5">
-        <input type="text " class="form-control" id="pwd" placeholder="Enter your favorite position">
+        <input type="text " class="form-control" id="pwd" placeholder="Enter your favorite position" ng-model='registerData.position'>
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="pwd">Jersey:</label>
       <div class="col-sm-5">
-        <input type="text " class="form-control" id="jersey" placeholder="Enter your jersey">
+        <input type="text " class="form-control" id="jersey" placeholder="Enter your jersey" ng-model='registerData.jersey'>
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="pwd">Hood  :</label>
       <div class="col-sm-5">
-        <input type="text " class="form-control" id="hood" placeholder="Enter your Hood">
+        <input type="text " class="form-control" id="hood" placeholder="Enter your Hood" ng-model='registerData.hood'>
       </div>
     </div>
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <div class="checkbox">
-          <label><input type="checkbox"> Remember me</label>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default" ng-click="saveData()">Save Details</button>
       </div>
     </div>
   </form>

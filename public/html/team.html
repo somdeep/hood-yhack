@@ -1,4 +1,24 @@
-		<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
 		<!-- web-font -->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,300,700,800,400,600' rel='stylesheet' type='text/css'>
 		<!-- web-font -->
@@ -91,11 +111,12 @@
 			<!-- container -->
 			<div class="container">
 				<div class="team-hedding wow bounceIn" data-wow-delay="0.4s">
-					<h3 style="font-size:26px;">The team</h3>
+					<h3 style="font-size:26px;">The team &nbsp;
+                    <a href="/match" style="font-size:14px" ng-click="addNewTeamMember()"  data-toggle="modal" data-target="#myModal">Add Members &nbsp;<span class="glyphicon glyphicon-plus" aria-hidden="true" ></span></a></h3><br/>
 				</div>
                 <div class="team-grids">
                     <div class="col-md-4 team-grid" align="middle" ng-repeat="member in currentTeamMembers">
-						<div align="middle"><img src="http://graph.facebook.com/{{member.playerId}}/picture?type=large" alt="" /></div>
+						<div align="middle"><img width="200px" height="200px" src="http://graph.facebook.com/{{member.playerId}}/picture?type=large" alt="" /></div>
                         <div class="">
                             <h4><strong><a href="/profile/{{member.playerId}}" style="text-decoration:none;">{{member.name}}</a></strong></h4>
 							<p>{{member.position}}</p>

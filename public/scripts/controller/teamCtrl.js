@@ -37,6 +37,10 @@ app.controller('teamCtrl', function ($rootScope, $scope,$http,$location,  $route
         });
     };
     
-    $scope.init();
+    $scope.addNewTeamMember = function() {
+        
+    };
+    
+    //$scope.init();
     
 });

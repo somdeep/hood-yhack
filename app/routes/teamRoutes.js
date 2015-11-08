@@ -19,16 +19,41 @@ module.exports = function(app) {
 
 // getTeamById
     app.get('/team/get/id/:teamId', function(req, res) {
-        var obj = mongoose.object
-        teamProfile.find({_id:mongoose.Types.ObjectId(req.params.teamId)}, function(err, data) {
+        console.log(req.params.teamId);
+        teamProfile.find({teamId:req.params.teamId}, function(err, data) {
             if(err) res.send(err);
+            console.log(data);
             res.json(data);
         });
     });
 
 // getTeamByName
     app.get('/team/get/name/:teamName', function(req, res) {
-        teamProfile.find({teamName:req.params.teamName}, function(err, data) {
+        teamProfile.find({name:req.params.teamName}, function(err, data) {
+            if(err) res.send(err);
+            res.json(data);
+        });
+    });
+
+// getTeamLikeName
+    app.get('/team/search/name/:teamName', function(req, res) {
+        var reg = new RegExp(req.params.teamName, 'i');
+        console.log(reg);
+        teamProfile.find({name: reg}, function(err, data) {
+        //teamProfile.find({teamName: new RegExp('*' + req.params.teamName + '*', 'i')}, function(err, data) {
+            console.log("data",data);
+            if(err) res.send(err);
+            res.json(data);
+        });
+    });
+
+// getTeamInHood
+    app.get('/team/search/hood/:hood', function(req, res) {
+        var reg = new RegExp(req.params.hood, 'i');
+        console.log(reg);
+        teamProfile.find({hood: reg}, function(err, data) {
+        //teamProfile.find({teamName: new RegExp('*' + req.params.teamName + '*', 'i')}, function(err, data) {
+            console.log("data",data);
             if(err) res.send(err);
             res.json(data);
         });

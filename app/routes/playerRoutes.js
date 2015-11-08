@@ -20,10 +20,16 @@ module.exports = function(app) {
         });
     });
 
-
+    app.get('/player/search/name/:playerName', function(req, res) {
+        var reg = new RegExp(req.params.playerName, 'i');
+        playerProfile.find({name: reg}, function(err, data) {
+            console.log("data",data);
+            if(err) res.send(err);
+            res.json(data);
+        });
+    });
 
 	app.get('/player/get/:playerId', function (req,res){
-
     	playerProfile.find({playerId:req.params.playerId}, function (err,data){
     		if(err)
     			res.send(err);
@@ -60,8 +66,6 @@ module.exports = function(app) {
     });
 
     app.put('/player/update/:playerId', function (req,res){
-    	console.log(req.body);
-
     	var updated=req.body;
     	console.log(updated);
 

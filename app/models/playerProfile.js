@@ -6,7 +6,7 @@ var dbSchema = new Schema({
         playerId : String,
         name: String,
         teamId: String,
-        nickName: String,
+        nickname: String,
         position: String,
         jersey: String,
         hood: String,

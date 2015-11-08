@@ -28,7 +28,7 @@ app.config(function($routeProvider, $locationProvider) {
       controller: 'profileCtrl',
       needAuth: true
     })
-    .when('/team/:teamId', {
+    .when('/team', {
       templateUrl: '/html/team.html',
       controller: 'teamCtrl',
       needAuth: true
@@ -75,19 +75,19 @@ app.controller('homeCtrl', function ($scope, $http, $rootScope, $location, faceb
     $rootScope.$on('fbLoginSuccess', function(name, response) {
       facebookUser.then(function(user) {
         //Values only if made public will be retured by FB
-        
+
         user.api('/me?fields=id,name,email,birthday,cover').then(function(response) {
             $rootScope.loggedInUser = response;
             $rootScope.loggedInUser.team={'name':'RockOn','owner':false};
-            
+
             //Sending to backend to verify profile or create profile if non existant
                 $scope.updateUserDetails(JSON.parse(JSON.stringify(response)));
-            
+
             //set cookie
             $scope.isLoggedIn = true;
             console.log(JSON.parse(JSON.stringify(response)));
             setCookie('fbVal',JSON.stringify(response),1,'');
-            
+
             if($location.$$path === '/login') {
                 $location.path('/');
             }
@@ -134,17 +134,17 @@ app.controller('homeCtrl', function ($scope, $http, $rootScope, $location, faceb
     $scope.addScore = function() {
         //$('#myModal').modal("toggle");
     };
-    
+
     $scope.model = {};
     $scope.selectedFile = [];
     $scope.uploadProgress = 0;
-    
-    
+
+
     $scope.onFileSelect = function ($files) {
         $scope.uploadProgress = 0;
         $scope.selectedFile = $files;
     };
-    
+
     $scope.uploadPhoto = function(file) {
         console.log(document.getElementById('file'));
     };

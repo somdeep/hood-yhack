@@ -8,7 +8,6 @@ var dbSchema = new Schema(
         team1Id: String,
         team2Id: String,
         date: Date,
-        place: String,
         team1Score: Number,
         team2Score: Number,
         photos: Array,

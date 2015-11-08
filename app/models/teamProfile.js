@@ -10,10 +10,8 @@ var dbSchema = new Schema(
             hood: String,
             stats:
                 {
-                    wins: Number,
-                    losses: Number,
-                    averageVictoryMargin: Number,
-                    homeWins: Number,
+                    won: Number,
+                    lost: Number,
                 }
         },
         { strict: false}

@@ -254,7 +254,7 @@ html,body {
 /*---- works ----*/
 .works {
 	background: #EBEBEB;
-	padding: 1em 0 7em 0;
+	padding: 1em 0 0em 0;
 }
 .works-hedding h3{
 	font-size: 67px;
@@ -848,8 +848,9 @@ h2.b-animate.b-from-left.b-delay03 {
 }
 /*---- team-bottom ----*/
 .team-bottom{
-	background:#E5E5E5;
-	padding:1em 0;
+	background:#FFFFFF;
+	padding:1em 0 0em 0;
+	margin:0em 0 0em 0;
 }
 .gift{
 	text-align:center;

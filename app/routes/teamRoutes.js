@@ -19,7 +19,8 @@ module.exports = function(app) {
 
 // getTeamById
     app.get('/team/get/id/:teamId', function(req, res) {
-        teamProfile.find({teamId:req.params.teamId}, function(err, data) {
+        var obj = mongoose.object
+        teamProfile.find({_id:mongoose.Types.ObjectId(req.params.teamId)}, function(err, data) {
             if(err) res.send(err);
             res.json(data);
         });

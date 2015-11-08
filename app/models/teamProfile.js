@@ -8,6 +8,7 @@ var dbSchema = new Schema(
             warCry: String,
             teamMembers: Array,
             hood: String,
+            captain:Object,
             stats:
                 {
                     won: Number,

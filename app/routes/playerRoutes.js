@@ -57,16 +57,16 @@ module.exports = function(app) {
     	console.log(updated);
 
     	playerProfile.update ({playerId:req.params.playerId},{$set : updated}, function (err,updated){
-    		if (err) 
+    		if (err)
     			res.send(err);
-    			
+
     			res.json(updated);
     		});
     	});
 
-    
 
-    
+
+
     app.delete('/player/delete/:playerId', function (req,res){
     	playerProfile.remove({_id:req.params.playerId},function (err,removed){
     		if(err)
@@ -74,4 +74,72 @@ module.exports = function(app) {
     		res.json(removed);
     	});
     });
+
+
+		app.post('/player/validate',function(req,res){
+			var flag=0;
+			var player=req.body;
+
+		/*	playerProfile.count({name:player.name},function(err,cnt){
+				if(err) res.send(err);
+
+				if(cnt<1)
+				res.send("Count under 1");
+
+			});
+
+*/
+				playerProfile.find({name:player.name},function(err,data){
+
+						if(err) res.send(err);
+
+						//if new player
+						if (data.length==0)
+						{
+											res.json({"status":"new"});
+											playerProfile.create(player,function(err,data1){
+
+								    		if(err)
+								        		res.send(err);
+
+								        	res.json(data1);
+							    		});
+						}
+
+
+						else
+						{
+
+
+											var tmp=data[0];
+											var str= JSON.parse(JSON.stringify(tmp), function(k, v) {
+											  //console.log(v); // log the current property name, the last is "".
+												return v;       // return the unchanged property value.
+											});
+											var cnt=0;
+
+
+
+											for (key in player)
+											{
+												if(!(player[key]==str[key]))
+												flag=1;
+											}
+
+											if(flag==1)
+											{
+												var ret={"status":"error"};
+												res.json(ret);
+											}
+
+											tmp["status"]="exists";
+											res.json(tmp);
+
+
+					}
+
+
+			});
+		});
+
 };

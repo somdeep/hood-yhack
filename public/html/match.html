@@ -1,33 +1,40 @@
+<style>
+.teamRow {
+        font-size:10px;
+        background:#FFF;
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+	.teamRow:hover {
+        background: #FFF;
+        text-decoration:none;
+        box-shadow: 0px 0px 10px #888888;
+        border-left: 3px solid #123;
+    }
+</style>
 <div>
 	<div class="container">
-		<div class="row" align="middle">
+		
+		<div class="row" align="middle" ng-show="matchSelection">
 			<br/><br/><br/>
-			<div class="col-sm-5 box" style="">
+			<div class="col-sm-5 box btn" style="" ng-click="getTeams(0)">
 				<br/><br/><br/>
 				<img src="/images/png/Briefcase.png"><br/><br/>
 				<h4>Team to Play next</h4><br/>
-				<p>Forms related to govt schemes offered to all who are employed.<br/> Eg. Apply for Form 16</p>
 			</div>
 			<div class="col-sm-1"></div>
-			<div class="col-sm-5 box" style="">
+			<div class="col-sm-5 box btn" style="">
 				<br/><br/><br/>
 				<img src="/images/png/box.png"><br/><br/>
 				<h4>Take the Challenge to the Next level</h4><br/>
-				<p>Forms related to govt schemes offered to individuals.<br/> Eg. License Issuing</p>
 			</div>
 			
 		</div>
-		<div class="row">
-			<hr/>
-		</div>
-		<div class="row">
-			<div class="col-sm-11"><input placeholder="Search Teams" class="form-control col-sm-12" ng-model="searchText.name" autofocus></div>
-			<br/><br/>
-		</div>
-		<div class="row" style="">
-			<div class="col-sm-12" ng-repeat="form in allForms | filter:searchText " style="padding:10px;">
-				<a class="h4" href="/form/{{form.name}}">{{form.name}}</a>
-			</div>
-		</div>
+        
+        <div class="row" align="middle" ng-show="matchSelection" ng-click="getTeams(1)">
+            <div ng-repeat = "team in teams" class="teamRow">
+                <a href="/team/{{team._id}}">{{team.name}}</a><br/>
+            </div>
+        </div>
 	</div>
 </div>

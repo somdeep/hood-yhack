@@ -34,6 +34,17 @@ module.exports = function(app) {
         });
     });
 
+// getTeamLikeName
+    app.get('/team/search/name/:teamName', function(req, res) {
+        var reg = new RegExp("\\*" + req.params.teamName + "\\*",'i');
+        console.log(reg);
+        teamProfile.find({teamName: reg}, function(err, data) {
+        //teamProfile.find({teamName: new RegExp('*' + req.params.teamName + '*', 'i')}, function(err, data) {
+            if(err) res.send(err);
+            res.json(data);
+        });
+    });
+
 // postTeam
     app.post('/team/create', function(req, res) {
         console.log(req.body);

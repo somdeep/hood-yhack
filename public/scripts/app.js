@@ -28,7 +28,7 @@ app.config(function($routeProvider, $locationProvider) {
       controller: 'profileCtrl',
       needAuth: true
     })
-    .when('/team', {
+    .when('/team/:teamId', {
       templateUrl: '/html/team.html',
       controller: 'teamCtrl',
       needAuth: true

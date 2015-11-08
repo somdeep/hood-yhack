@@ -5,7 +5,9 @@ app.controller('teamCtrl', function ($rootScope, $scope,$http,$location,  $route
         if ($rootScope.loggedInUser === "undefined" || readCookie('fbVal') != "" ) {
             var user = JSON.parse(readCookie('fbVal'));
         }
-        $scope.challangeVisibility = $rootScope.team
+        console.log('-----------------------');
+        console.log($rootScope.loggedInUser);
+        $scope.challangeVisibility = $rootScope.team===$rootScope.loggedInUser.team;
     };
     console.log($routeParams.teamId);
     $http.get('/team/get/id/'+$routeParams.teamId)
@@ -35,6 +37,6 @@ app.controller('teamCtrl', function ($rootScope, $scope,$http,$location,  $route
         });
     };
     
-    
+    $scope.init();
     
 });

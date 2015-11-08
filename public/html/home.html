@@ -21,26 +21,7 @@
         <div ng-controller="homeCtrl">
 
             <!-- Pop-up to input score -->
-            <!-- Modal -->
-            <div id="myModal" class="modal fade" role="dialog">
-              <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
-                  </div>
-                  <div class="modal-body">
-                    <p>Some text in the modal.</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-
-              </div>
-            </div>
+           
 
             <!-- Navbar -->
             <div class="navbar navbar-default navbar-fixed-top" id="navBar" ng-show="isLoggedIn" >
@@ -59,7 +40,7 @@
                     <div class="collapse navbar-collapse navHeaderCollapse" >
                         <ul class="nav navbar-nav navbar-right navbar-brand" ng-show="true">
                             <li class="nav"><a href="/profile/{{loggedInUser.playerId}}" style="font-size:14px">{{loggedInUser.name}}</a></li>
-                            <li class=""><a href="/team" style="font-size:14px">My Team</a></li>
+                            <li class=""><a href="/team/{{loggedInUser.teamId}}" style="font-size:14px">My Team</a></li>
                             <li class=""><a href="/matchresults" style="font-size:14px">Matches</a></li>
                             <li class=""><a href="/match" style="font-size:14px" ng-click="addScore()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></li>
                             <li class=""><a href="/login" ng-click="logout()"><facebook-login-button></facebook-login-button>
@@ -130,6 +111,7 @@
         <script src="/scripts/controller/teamCtrl.js"></script>
         <script src="/scripts/controller/matchresultsCtrl.js"></script>
         <script src="/scripts/controller/matchCtrl.js"></script>
+        <script src="/scripts/controller/registerCtrl.js"></script>
         <!-- FB SDK -->
         <script src="bower_components/angularFacebookUtils/src/facebookUtils.min.js"></script>
 

@@ -1,33 +1,55 @@
+<style>
+.teamRow {
+        background:#FFF;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        align-content: flex-start;
+        background: #FFF;
+        text-decoration:none;
+        box-shadow: 0px 0px 2px #888888;
+        border-left: 3px solid #123;
+        padding: 10px;
+    }
+</style>
 <div>
 	<div class="container">
-		<div class="row" align="middle">
+		
+		<div class="row" align="middle" ng-show="matchSelection">
 			<br/><br/><br/>
-			<div class="col-sm-5 box" style="">
+			<div class="col-sm-5 box btn" style="" ng-click="getTeams(0)">
 				<br/><br/><br/>
 				<img src="/images/png/Briefcase.png"><br/><br/>
 				<h4>Team to Play next</h4><br/>
-				<p>Forms related to govt schemes offered to all who are employed.<br/> Eg. Apply for Form 16</p>
 			</div>
 			<div class="col-sm-1"></div>
-			<div class="col-sm-5 box" style="">
+			<div class="col-sm-5 box btn" style="" ng-click="getTeams(1)">
 				<br/><br/><br/>
 				<img src="/images/png/box.png"><br/><br/>
 				<h4>Take the Challenge to the Next level</h4><br/>
-				<p>Forms related to govt schemes offered to individuals.<br/> Eg. License Issuing</p>
 			</div>
 			
 		</div>
-		<div class="row">
-			<hr/>
-		</div>
-		<div class="row">
-			<div class="col-sm-11"><input placeholder="Search Teams" class="form-control col-sm-12" ng-model="searchText.name" autofocus></div>
-			<br/><br/>
-		</div>
-		<div class="row" style="">
-			<div class="col-sm-12" ng-repeat="form in allForms | filter:searchText " style="padding:10px;">
-				<a class="h4" href="/form/{{form.name}}">{{form.name}}</a>
-			</div>
-		</div>
+        
+        <div class="row" align="" ng-show="teamSelection" >
+            <h3 class="bs-callout"><strong>Matching Teams</strong></h3>
+            
+            <br/>
+            <div ng-repeat = "team in teams" class="teamRow col-xs-12">
+                <div class="col-sm-6 col-sx-12"><strong><a href="/team/{{team._id}}">{{team.name}}</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;<i>{{team.warcry}}</i>
+                </div>
+                <div class="col-sm-2 col-xs-4">
+                    {{team.stats.wins}}
+                </div>
+                <div class="col-sm-2 col-xs-4">
+                    {{team.stats.losses}}
+                </div>
+                <div class="col-sm-2 col-xs-4">
+                    {{team.stats.homeWins}}
+                </div>
+                
+                <hr/>
+                &nbsp;&nbsp;-&nbsp;&nbsp;{{team.hood}}
+            </div>
+        </div>
 	</div>
 </div>

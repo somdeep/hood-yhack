@@ -59,7 +59,7 @@
                     <div class="collapse navbar-collapse navHeaderCollapse" >
                         <ul class="nav navbar-nav navbar-right navbar-brand" ng-show="true">
                             <li class="nav"><a href="/profile/{{loggedInUser.playerId}}" style="font-size:14px">{{loggedInUser.name}}</a></li>
-                            <li class=""><a href="/team" style="font-size:14px">My Team</a></li>
+                            <li class=""><a href="/team/{{loggedInUser.teamId}}" style="font-size:14px">My Team</a></li>
                             <li class=""><a href="/matchresults" style="font-size:14px">Matches</a></li>
                             <li class=""><a href="/match" style="font-size:14px" ng-click="addScore()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></li>
                             <li class=""><a href="/login" ng-click="logout()"><facebook-login-button></facebook-login-button>

@@ -1,22 +1,30 @@
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+<style>
+.hoverShadow:hover {
+    background-color: #EEE;
+}
+</style>
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+      
+      
+      <div class="modal-content">
+          <div class="modal-header"><h4>Search and add members..</h4></div>
+          <div class="modal-body">
+              <input type="text" class="input form-control" ng-model="memSearch" ng-change="getMembers()"/>
+              <hr/>
+              <div class="row btn" style="width:100%;">
+                  <div class="col-sm-12 btn hoverShadow" ng-repeat="result in searchResults" ng-click="addNewTeamMember($index)" data-dismiss="modal">
+                      <div class="col-sm-3"><img width="50px" height="50px" src="http://graph.facebook.com/{{result.playerId}}/picture?type=large" alt="" /></div>
+                      <div class="col-sm-9"><h5><strong>{{result.name}}</strong></h5></div>
+                  </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
       </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
   </div>
 </div>
-
 
 <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
 		<!-- web-font -->
@@ -44,6 +52,7 @@
 		 new WOW().init();
 		</script>
 <!-- animated-css -->
+        <div ng-show="teamExists">
 		<!-- header -->
 		<div id="home" class="heder">
 			<!-- container -->
@@ -63,15 +72,6 @@
 
 
 						</ul>
-						<!-- script-for-menu -->
-							 <script>
-							   $( "span.menu" ).click(function() {
-								 $( "ul.nav1" ).slideToggle( 300, function() {
-								 // Animation complete.
-								  });
-								 });
-							</script>
-						<!-- /script-for-menu -->
 					</div>
 					<div class="clearfix"> </div>
 				</div>
@@ -79,30 +79,20 @@
 			<!-- container -->
 		</div>
 		<!-- works -->
-		<div class="team-bottom">
+		<div class="team-bottom"  style="background-color:#222">
 			<!-- container -->
 			<div class="container">
-				<div class="col-md-3 gift wow bounceIn" data-wow-delay="0.4s">
+				<div class="col-sm-6 gift wow bounceIn" data-wow-delay="0.4s">
 					<span> </span>
-					<p>{{currentTeam.stats.wins}}</p>
+					<p>{{currentTeam.stats.won || 120}}</p>
 					<p class="text">Wins</p>
 				</div>
-				<div class="col-md-3 gift wow bounceIn" data-wow-delay="0.4s">
+				<div class="col-sm-6 gift wow bounceIn" data-wow-delay="0.4s">
 					<span class="comments"> </span>
-					<p>{{currentTeam.stats.losses}}</p>
+					<p>{{currentTeam.stats.lost}}</p>
 					<p class="text">Losses</p>
 				</div>
-				<div class="col-md-3 gift wow bounceIn" data-wow-delay="0.4s">
-					<span class="cups"> </span>
-					<p>{{currentTeam.stats.averageVictoryMargin}}</p>
-					<p class="text">Average Win Margin</p>
-				</div>
-				<div class="col-md-3 gift wow bounceIn" data-wow-delay="0.4s">
-					<span class="awards"> </span>
-					<p>{{currentTeam.stats.homeWins}}</p>
-					<p class="text">Home Wins</p>
-				</div>
-				<div class="clearfix"> </div>
+				
 			</div>
 			<!-- container -->
 		</div>
@@ -111,8 +101,10 @@
 			<!-- container -->
 			<div class="container">
 				<div class="team-hedding wow bounceIn" data-wow-delay="0.4s">
-					<h3 style="font-size:26px;">The team &nbsp;
-                    <a href="/match" style="font-size:14px" ng-click="addNewTeamMember()"  data-toggle="modal" data-target="#myModal">Add Members &nbsp;<span class="glyphicon glyphicon-plus" aria-hidden="true" ></span></a></h3><br/>
+                    <h3 style="font-size:26px;">The team </h3>&nbsp;<br/>
+                    <!-- Large modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add Member</button>
+                    <br/>
 				</div>
                 <div class="team-grids">
                     <div class="col-md-4 team-grid" align="middle" ng-repeat="member in currentTeamMembers">
@@ -120,6 +112,7 @@
                         <div class="">
                             <h4><strong><a href="/profile/{{member.playerId}}" style="text-decoration:none;">{{member.name}}</a></strong></h4>
 							<p>{{member.position}}</p>
+							<a ng-click="removeMember(member)" href="javascript(0);" style="font-size:10px;">Remove</a>
 						</div>
 					</div>
                    
@@ -206,3 +199,19 @@
 		</div>
 		
 		
+<div ng-hide="teamExists" class="container">
+    <center>
+    <h4>You are not in any team.. Join Teams or create a new team here</h4>
+    <hr/><br/>
+    Team Name
+    <input class="input form-control" type="text" ng-model="newTeamName"/>
+    <br/>
+    Hood
+    <input class="input form-control" type="text" ng-model="hood"/>
+    <br/>
+    warcry
+    <input class="input form-control" type="text" ng-model="warcry"/>
+    <br/>
+    <button class="btn" ng-click="createTeam()">Create Team</button>
+    </center>
+</div>

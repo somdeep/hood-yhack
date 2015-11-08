@@ -12,7 +12,7 @@ var dbSchema = new Schema(
             stats:
                 {
                     won: Number,
-                    lost: Number,
+                    lost: Number
                 }
         },
         { strict: false}

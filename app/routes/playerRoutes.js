@@ -100,7 +100,8 @@ module.exports = function(app) {
 						if (data.length==0)
 						{
 											res.json({"status":"new"});
-                            player['playerId'] = player.id
+                            player['playerId'] = player.id;
+                            player['teamId'] = "null";
                             playerProfile.create(player,function(err,data1){
 
 								    		if(err)

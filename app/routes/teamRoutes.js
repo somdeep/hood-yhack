@@ -62,11 +62,13 @@ module.exports = function(app) {
 // postTeam
     app.post('/team/create', function(req, res) {
         console.log(req.body);
-
+        
+        var mongoose = require('mongoose');
+        var id = mongoose.Types.ObjectId();
         // schema validation pending
         var newTeam = req.body;
-        console.log(newTeam['teamId']);
-
+        newTeam['teamId'] = id;
+        
         teamProfile.create(newTeam, function(err, data) {
             console.log("data", data);
             if(err) res.send(err);

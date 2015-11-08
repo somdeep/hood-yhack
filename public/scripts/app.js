@@ -2,7 +2,7 @@ var app = angular.module('mainApp', ['ngRoute','ngCookies','facebookUtils','ngFi
 .constant('facebookConfigSettings', {
     'routingEnabled' : true,
     'channelFile'    : 'channel.html',
-    'appID'          : '927018427365481',
+    'appID'          : '927429740657683',
     'loginPath'      : '/login'
   });
 

@@ -25,23 +25,23 @@
 		</script>
 <!-- animated-css -->
 		<!-- header -->
-		<div id="home" class="heder">
+		<div id="home" class="heder" style="background-color:#E5e5e5" >
 			<!-- container -->
-			<div class="container">
-				<div class="header-top">
-					<div class="heder-logo">
-						<h1><a href="#"><b>{{currentUser.name}}</b></a></h1>
-						<h5 style="color:white;"> <b>{{currentUserStats.position}}</b> from <b>{{currentUserStats.hood}}</b></h5>
+			<div class="container" style="margin-top:-50px">
+				<div class="header-top ">
+					<div class="heder-logo col-sm-9" style="margin-left:-15px">
+						<h1><a href="#" style="color:black;"><b>{{currentUser.name}}</b></a></h1>
+						<h5 style="color:black;"> <b>{{currentUserStats.position}}</b> from <b>{{currentUserStats.hood}}</b></h5>
 					</div>
-					<div class="top-nav">
+						<div class="top-nav">
 					<span class="menu"><img src="images/menu.png" alt=""></span>
-						<ul>
+						<!-- Single button -->
+
+ 
 
 
-							<li><a class="Signup play-icon popup-with-zoom-anim btn-primary" href="#small-dialog2">Request to Join</a></li>
+					
 
-
-						</ul>
 						<!-- script-for-menu -->
 							 <script>
 							   $( "span.menu" ).click(function() {
@@ -52,40 +52,37 @@
 							</script>
 						<!-- /script-for-menu -->
 					</div>
-					<div class="clearfix"> </div>
+						<div class="col-sm-3" style="padding-right:0;margin-top:30px;margin-bottom:30px" align="right">
+  							<button type="button" class="btn btn-primary " >
+   						Request to Join
+  							</button>
+  							</div>
+					
 				</div>
 			</div>
 			<!-- container -->
 		</div>
-		<!-- header -->
-		<!-- banner -->
-
-		<!-- banner -->
-		<!-- services -->
-		<!-- services -->
-		<!-- icons -->
-		<!-- icons -->
-		<!-- works -->
-		<div class="team-bottom" >
+		
+		<div class="team-bottom" align="middle">
 			<!-- container -->
 			<div class="container">
 				<div class="col-md-3 gift wow bounceIn" data-wow-delay="0.4s">
-					<span> </span>
+					
 					<p style="color:black">{{currentUserStats.points}}</p>
 					<p class="text" style="color:black">POINTS</p>
 				</div>
 				<div class="col-md-3 gift wow bounceIn" data-wow-delay="0.4s">
-					<span class="comments"> </span>
+					
 					<p style="color:black">{{currentUserStats.rebounds}}</p>
 					<p class="text" style="color:black">REBOUNDS</p>
 				</div>
 				<div class="col-md-3 gift wow bounceIn" data-wow-delay="0.4s">
-					<span class="cups"> </span>
+					
 					<p style="color:black">{{currentUserStats.steals}}</p>
 					<p class="text" style="color:black">STEALS</p>
 				</div>
 				<div class="col-md-3 gift wow bounceIn" data-wow-delay="0.4s">
-					<span class="awards"> </span>
+				
 					<p style="color:black">{{currentUserStats.assists}}</p>
 					<p class="text" style="color:black">ASSISTS</p>
 				</div>
@@ -94,13 +91,13 @@
 			<!-- container -->
 		</div>
 
-		<div class="our-team">
-			<!-- container -->
+		
 
 
-		<div id="portfolio" class="works">
+		<div id="portfolio" class="works" style="padding-bottom:5em;">
 			<!-- container -->
-			<div class="container">
+			
+			<div class="container" align="middle">
 				<div class="works-hedding wow bounceIn" data-wow-delay="0.4s">
 					<h4>Photos</h4>
 				</div>
@@ -108,43 +105,43 @@
 				<div id="portfoliolist">
 					<div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
 						<div class="portfolio-wrapper wow bounceIn" data-wow-delay="0.4s">
-							<a href="#small-dialog" class="b-link-stripe b-animate-go">
-						     <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-							</a>
+							
+						     <img class="img-circle" src="/img/cinqueterre.jpg" alt="Generic placeholder image" width="140" height="140">
+							
 		                </div>
 					</div>
-					<div class="portfolio app mix_all" data-cat="app" style="display: inline-block; opacity: 1;">
+					<div class="portfolio app mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
 						<div class="portfolio-wrapper wow bounceIn" data-wow-delay="0.4s">
 							<a href="#small-dialog1" class="b-link-stripe b-animate-go">
-						    <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+						    <img class="img-circle" src="/img/cinqueterre.jpg" alt="Generic placeholder image" width="140" height="140">
 							</a>
 		                </div>
 					</div>
 					<div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
 						<div class="portfolio-wrapper wow bounceIn" data-wow-delay="0.4s">
 							<a href="#small-dialog2" class="b-link-stripe b-animate-go">
-						     <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+						     <img class="img-circle" src="/img/cinqueterre.jpg" alt="Generic placeholder image" width="140" height="140">
 							</a>
 		                </div>
 					</div>
-					<div class="portfolio app mix_all" data-cat="app" style="display: inline-block; opacity: 1;">
+					<div class="portfolio app mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
 						<div class="portfolio-wrapper wow bounceIn" data-wow-delay="0.4s">
 							<a href="#small-dialog3" class="b-link-stripe b-animate-go">
-						     <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+						     <img class="img-circle" src="/img/cinqueterre.jpg" alt="Generic placeholder image" width="140" height="140">
 							</a>
 		                </div>
 					</div>
 					<div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
 						<div class="portfolio-wrapper wow bounceIn" data-wow-delay="0.4s">
 							<a href="#small-dialog4" class="b-link-stripe b-animate-go">
-						     <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+						     <img class="img-circle" src="/img/cinqueterre.jpg" alt="Generic placeholder image" width="140" height="140">
 							 </a>
 		                </div>
 					</div>
-					<div class="portfolio app mix_all" data-cat="app" style="display: inline-block; opacity: 1;">
+					<div class="portfolio app mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
 						<div class="portfolio-wrapper wow bounceIn" data-wow-delay="0.4s">
 							<a href="#small-dialog5" class="b-link-stripe b-animate-go">
-						      <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"><</a>
+						      <img class="img-circle" src="/img/cinqueterre.jpg" alt="Generic placeholder image" width="140" height="140"></a>
 		                </div>
 					</div>
 					<div class="clearfix"></div>
@@ -196,17 +193,8 @@
 			<!-- Gallery Script Ends -->
 				<div class="clearfix"></div>
 
+		
 			</div>
 			<!-- container -->
 		</div>
-		<!-- works -->
-		<!-- works-bottom -->
-
-		<!-- works-bottom -->
-		<!-- team -->
-
-		<!-- team -->
-		<!-- team-bottom -->
-
-		<!-- team-bottom -->
-		<!-- skills -->
+		

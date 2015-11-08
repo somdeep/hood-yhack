@@ -31,6 +31,15 @@ module.exports = function(app) {
     	});
     });
 
+    app.get('/player/getMany/:playerIds', function (req,res){
+        var idList = req.params.playerIds.split('+');
+    	playerProfile.find({playerId: { $in : idList}}, function (err,data){
+    		if(err)
+    			res.send(err);
+    		res.json(data);
+    	});
+    });
+
 
     app.post('/player/create', function(req,res){
 

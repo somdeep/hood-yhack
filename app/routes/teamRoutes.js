@@ -19,9 +19,10 @@ module.exports = function(app) {
 
 // getTeamById
     app.get('/team/get/id/:teamId', function(req, res) {
-        var obj = mongoose.object
+        console.log(req.params.teamId);
         teamProfile.find({teamId:req.params.teamId}, function(err, data) {
             if(err) res.send(err);
+            console.log(data);
             res.json(data);
         });
     });
